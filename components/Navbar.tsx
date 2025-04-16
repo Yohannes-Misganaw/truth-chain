@@ -86,7 +86,7 @@ export default function Navbar() {
           href="/connect-wallet"
           className="group relative overflow-hidden border border-gray-400 text-xs items-center px-6 py-3 rounded transition-all duration-300"
         >
-          <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full rounded" />
+          <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full rounded-[3px]" />
 
           <span className="relative z-10 mix-blend-exclusion">
             Connect Wallet
