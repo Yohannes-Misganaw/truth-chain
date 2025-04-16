@@ -7,8 +7,9 @@ import { Menu, X } from "lucide-react";
 
 const menuItems = [
   { name: "Home", href: "/" },
+  { name: "Archive", href: "/archive" },
+  { name: "Submit Claim", href: "/submit" },
   { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
 ];
 
 const navVariants = {
@@ -37,14 +38,16 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed flex px-4 md:px-10 py-5 items-center justify-between top-0 z-20 left-0 w-full bg-black/95 md:bg-transparent text-gray-300 font-ibm-plex-mono">
+    <nav className="fixed flex px-4 md:px-10 py-5 items-center justify-between top-0 z-20 left-0 w-full bg-black/95 md:bg-transparent text-gray-300">
       <div className="flex items-center space-x-4 md:space-x-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-base font-medium text-white tracking-tighter cursor-default"
+          className="text-base font-medium text-white tracking-tighter"
         >
-          Truth Chain
+          <Link href="/" className="cursor-default">
+            Truth Chain
+          </Link>
         </motion.div>
 
         <motion.div
@@ -54,13 +57,13 @@ export default function Navbar() {
           transition={{ duration: 0.5 }}
         />
 
-        <div className="hidden md:flex space-x-8 text-[13px] font-medium">
+        <div className="hidden md:flex space-x-12 text-[13px] font-medium">
           {menuItems.map((item, index) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <Link
                 href={item.href}

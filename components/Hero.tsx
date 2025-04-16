@@ -8,13 +8,13 @@ export default function Hero() {
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden">
       <Starfield
-        starCount={1000}
+        starCount={2000}
         starColor={[255, 255, 255]}
         speedFactor={0.01}
         backgroundColor="black"
       />
       <div className="relative h-full w-full bg-gradient-to-t from-purple-900/30 via-black to-black">
-        <div className="container relative mx-auto flex h-full flex-col items-center justify-center lg:justify-start lg:py-40 px-4 font-ibm-plex-mono">
+        <div className="container relative mx-auto flex h-full flex-col items-center justify-center lg:justify-start lg:py-40 px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
