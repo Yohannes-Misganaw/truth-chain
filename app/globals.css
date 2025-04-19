@@ -74,7 +74,7 @@ body {
   overflow: hidden;
 }
 .about-title-text{
-  font-size: 60px;
+  font-size: 45px;
   position: center;
   font-weight: bold;
   color: var(--foreground);
