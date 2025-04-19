@@ -104,7 +104,7 @@ export default function ConnectWalletPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-black/80 backdrop-blur-lg rounded-2xl border border-purple-700/30 p-6 md:p-8 max-w-md w-full mx-4"
+          className="bg-black/80 backdrop-blur-lg border border-purple-700/30 p-6 md:p-8 max-w-md w-full mx-4"
         >
           <div className="text-center space-y-4 md:space-y-6">
             <div className="flex justify-center items-center">
@@ -136,7 +136,7 @@ export default function ConnectWalletPage() {
 
                 <button
                   onClick={disconnectWallet}
-                  className="w-full group bg-red-700/70 hover:bg-red-600 text-white h-10 text-sm px-4 rounded-xl transition-all duration-200"
+                  className="w-full group bg-red-700/70 hover:bg-red-600 text-white h-10 text-sm px-4 transition-all duration-200"
                 >
                   <div className="flex items-center justify-center">
                     <LogOut className="w-4 h-4 mr-2" />
@@ -152,7 +152,7 @@ export default function ConnectWalletPage() {
                   isConnecting
                     ? "bg-purple-800"
                     : "bg-purple-700 hover:bg-purple-600"
-                } text-white h-12 text-base md:text-lg px-4 md:px-6 rounded-xl transition-all duration-200`}
+                } text-white h-12 text-base md:text-lg px-4 md:px-6 transition-all duration-200`}
               >
                 <div className="flex items-center justify-between">
                   <Wallet2 className="w-5 h-5 flex-shrink-0" />

@@ -40,7 +40,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative min-h-screen space-y-10 w-full overflow-hidden bg-gradient-to-b from-purple-900/30 via-black to-black">
+    <section className="relative min-h-screen space-y-10 w-full overflow-hidden bg-gradient-to-b from-purple-900/30 via-black to-transparent">
       <div className="container mx-auto px-4 py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ export default function HowItWorks() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-gradient bg-gradient-to-b from-gray-300 via-gray-500 to-gray-500 bg-clip-text text-3xl font-bold !leading-tight text-transparent "
+            className="text-gradient bg-gradient-to-b from-gray-300 via-gray-500 to-gray-500 bg-clip-text text-2xl font-bold !leading-tight text-transparent md:text-3xl lg:text-4xl"
           >
             How Truth Chain Works
           </motion.h2>
@@ -65,7 +65,7 @@ export default function HowItWorks() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden border border-gray-600 bg-black/30 p-6 backdrop-blur-sm"
+              className="group relative overflow-hidden border-2 md:border bg-black/30 p-6 backdrop-blur-sm"
               style={{
                 borderImage:
                   "repeating-linear-gradient(-45deg, #364153 0, #364153 4px, transparent 4px, transparent 8px) 1.5",
@@ -172,9 +172,14 @@ export default function HowItWorks() {
                 Where is my verified data stored?
               </AccordionTrigger>
               <AccordionContent className="text-gray-400 my-5">
-                All metadata and verification statuses are stored on the
-                blockchain for immutability; the actual files are kept on IPFS
-                for censorship‑resistant access.
+                <div className="flex items-start">
+                  <div className="p-1.5 bg-purple-700 mr-2 mt-1" />
+                  <p>
+                    All metadata and verification statuses are stored on the
+                    blockchain for immutability; the actual files are kept on
+                    IPFS for censorship‑resistant access.
+                  </p>
+                </div>
               </AccordionContent>
             </AccordionItem>
           </Accordion>
