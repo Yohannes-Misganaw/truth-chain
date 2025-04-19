@@ -1,18 +1,17 @@
 import { FooterLarge } from "@/components/Footer";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import VerifiedNews from "@/components/VerifiedNews";
-import Archive from "@/components/Archive";
-import SubmitClaim from "@/components/SubmitClaim";
+
+import HowItWorks from "@/components/HowItWorks";
+import KeyBenefits from "@/components/KeyBenefits";
+import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
     <main className="min-h-screen ">
       <Hero />
-      <About />
-      <VerifiedNews/>
-      <Archive/>
-      <SubmitClaim/>
+      <HowItWorks />
+      {/* <KeyBenefits />
+      <Testimonials /> */}
       <FooterLarge />
     </main>
   );
