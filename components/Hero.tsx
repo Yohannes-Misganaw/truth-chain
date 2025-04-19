@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Starfield from "./ui/Starfield";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -49,13 +50,16 @@ export default function Hero() {
               transition={{ delay: 0.9 }}
               className="mt-8 flex justify-center space-x-4"
             >
-              <button className="group relative overflow-hidden border border-gray-400 text-xs items-center px-6 py-3 rounded transition-all duration-300">
-                <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full rounded" />
+              <Link
+                href="/archive"
+                className="group relative overflow-hidden border border-gray-400 text-xs items-center px-6 py-3 transition-all duration-300"
+              >
+                <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full" />
 
                 <span className="relative z-10 mix-blend-exclusion">
                   Explore The Archive
                 </span>
-              </button>
+              </Link>
             </motion.div>
           </motion.div>
 

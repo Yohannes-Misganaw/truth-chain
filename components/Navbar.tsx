@@ -10,6 +10,7 @@ const menuItems = [
   { name: "Verified News", href: "/news" },
   { name: "Archive", href: "/archive" },
   { name: "Submit Claim", href: "/submit" },
+  { name: "Claims", href: "/claims" },
   { name: "About", href: "/about" },
 ];
 
@@ -39,8 +40,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed flex px-4 md:px-10 py-5 items-center justify-between top-0 z-20 left-0 w-full bg-black/95 md:bg-transparent text-gray-300">
-      <div className="flex items-center space-x-4 md:space-x-10">
+    <nav className="fixed flex px-4 lg:px-10 py-5 items-center justify-between top-0 z-20 left-0 w-full bg-black/95 lg:bg-black/30 text-gray-300">
+      <div className="flex items-center space-x-4 lg:space-x-10">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -52,13 +53,13 @@ export default function Navbar() {
         </motion.div>
 
         <motion.div
-          className="hidden md:block w-px h-6 bg-gray-600"
+          className="hidden lg:block w-px h-6 bg-gray-600"
           initial={{ scaleY: 0 }}
           animate={{ scaleY: 1 }}
           transition={{ duration: 0.5 }}
         />
 
-        <div className="hidden md:flex space-x-12 text-[13px] font-medium">
+        <div className="hidden lg:flex space-x-12 text-[13px] font-medium">
           {menuItems.map((item, index) => (
             <motion.div
               key={item.name}
@@ -81,13 +82,13 @@ export default function Navbar() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
-        className="hidden md:block"
+        className="hidden lg:block"
       >
         <Link
           href="/connect-wallet"
-          className="group relative overflow-hidden border border-gray-400 text-xs items-center px-6 py-3 rounded transition-all duration-300"
+          className="group relative overflow-hidden border border-gray-400 text-xs items-center px-6 py-3 transition-all duration-300"
         >
-          <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full rounded-[3px]" />
+          <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full" />
 
           <span className="relative z-10 mix-blend-exclusion">
             Connect Wallet
@@ -99,7 +100,7 @@ export default function Navbar() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden p-2 -mr-2 text-gray-400 hover:text-white focus:outline-none"
+        className="lg:hidden p-2 -mr-2 text-gray-400 hover:text-white focus:outline-none"
         aria-label="Toggle menu"
       >
         {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -111,20 +112,20 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-sm md:hidden overflow-hidden"
+            className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-sm lg:hidden overflow-hidden"
           >
             <motion.div
               variants={navVariants}
               initial="closed"
               animate="open"
               exit="closed"
-              className="px-4 py-4 space-y-4"
+              className="px-4 py-6 space-y-4"
             >
               {menuItems.map((item) => (
                 <motion.div
                   key={item.name}
                   variants={itemVariants}
-                  className="border-b border-gray-800"
+                  className="border-b border-gray-600"
                 >
                   <Link
                     href={item.href}
@@ -138,7 +139,7 @@ export default function Navbar() {
               <motion.div variants={itemVariants} className="mt-8">
                 <Link
                   href="/connect-wallet"
-                  className="group relative block overflow-hidden border border-gray-400 text-xs w-full text-center py-3 rounded transition-all duration-300"
+                  className="group relative block overflow-hidden border border-gray-400 text-xs w-full text-center py-3 transition-all duration-300"
                   onClick={() => setIsOpen(false)}
                 >
                   <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full" />
