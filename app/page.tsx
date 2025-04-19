@@ -1,5 +1,6 @@
 import { FooterLarge } from "@/components/Footer";
 import Hero from "@/components/Hero";
+
 import HowItWorks from "@/components/HowItWorks";
 import KeyBenefits from "@/components/KeyBenefits";
 import Testimonials from "@/components/Testimonials";
