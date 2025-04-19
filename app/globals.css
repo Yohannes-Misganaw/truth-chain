@@ -58,3 +58,111 @@ body {
   color: var(--foreground);
   font-family: var(--font-ibm-plex-mono);
 }
+
+/*ABOUT SECTION STYLING*/
+
+.about-section{
+  position:relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding:20px 20px;
+  background-color:black;
+  color:white;
+  overflow: hidden;
+}
+.about-title-text{
+  font-size: 60px;
+  position: center;
+  font-weight: bold;
+  color: var(--foreground);
+  text-align: center;
+  background: linear-gradient(45deg, #c8c7c8 0%, #454545 100%);
+  padding: 0;
+  margin: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-main-text{
+  font-size: 20px;
+  flex: 1;
+  font-weight: bold;
+  color: var(--foreground);
+  width: 100%;
+  text-align: left;
+  margin-right: 20px;
+  padding: 0;
+  /*  padding-right: 1000px;
+    padding-bottom: 40px;*/
+  background: linear-gradient(180deg, #c8c7c8 0%, #454545 100%);
+  line-height: 1.5;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.about-all-content{
+
+    display: flex;
+    justify-content: space-between; /* Space between text and image */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Limit the width of the content */
+
+}
+.about-images{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-left: 20%;
+  object-fit: contain;
+  height: auto;
+  width: 150%; /* Make the image responsive */
+  max-width: 500px; /* Limit the maximum width */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image fits within its container */
+  position: relative;
+
+  transform:scale(1.2); /* Scale the image slightly larger */
+  transition: transform 0.3s ease; /* Smooth transition for scaling */
+  z-index: 1; /* Ensure the image is above the background */
+}
+
+.about-images-globe {
+  flex-shrink: 0; /* Prevent the image from shrinking */
+  width: 50%; /* Take up half the section width */
+  max-width: none;
+  display: flex;
+  justify-content: flex-end; /* Align the image to the right */
+  align-items: center; /* Center the image vertically */
+  object-fit: visible; /* Ensure the image fits within its container */
+}
+
+
+@media (max-width: 100%) {
+  .about-all-content {
+    flex-direction: column; /* Stack text and image vertically */
+    align-items: center;
+  }
+
+  .about-main-text {
+    margin-right: 0; /* Remove right margin for smaller screens */
+    margin-bottom: 20px; /* Add spacing below the text */
+  }
+
+  .about-images-globe {
+    width: 100%; /* Full width for smaller screens */
+    justify-content: center; /* Center the image */
+  }
+
+  .about-images {
+    /*max-width: 300px;  Reduce image size for smaller screens */
+    width: 100%; /* Full width for smaller screens */
+  }
+}
+/*END OF ABOUT SECTION STYLING*/
