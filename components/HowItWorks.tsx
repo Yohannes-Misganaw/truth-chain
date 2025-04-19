@@ -40,7 +40,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-gradient-to-b from-purple-900/30 via-black to-black">
+    <section className="relative min-h-screen space-y-10 w-full overflow-hidden bg-gradient-to-b from-purple-900/30 via-black to-black">
       <div className="container mx-auto px-4 py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
