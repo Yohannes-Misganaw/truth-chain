@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { Mail, Twitter, Github, Linkedin, Newspaper } from "lucide-react";
-import { TbFileText } from "react-icons/tb";
+import { Mail, Newspaper } from "lucide-react";
+import { TbBrandGithub, TbBrandLinkedin, TbFileText } from "react-icons/tb";
+import { FaXTwitter } from "react-icons/fa6";
+import { RiTelegram2Line } from "react-icons/ri";
 
 export function FooterLarge() {
   return (
@@ -9,9 +11,7 @@ export function FooterLarge() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-24">
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2">
-              <div className="px-2 py-1.5 text-sm rounded-lg bg-purple-600">
-                TC
-              </div>
+              <div className="px-2 py-1.5 text-sm bg-purple-600">TC</div>
               <span className="text-xl font-bold text-white">Truth Chain</span>
             </div>
             <p className="mt-4 text-gray-400">
@@ -61,15 +61,15 @@ export function FooterLarge() {
             <div className="mt-4 flex space-x-6 lg:mt-0">
               <SocialIcon
                 href="https://twitter.com"
-                icon={<Twitter className="w-5 h-5" />}
+                icon={<FaXTwitter className="w-5 h-5" />}
               />
               <SocialIcon
                 href="https://github.com"
-                icon={<Github className="w-5 h-5" />}
+                icon={<TbBrandGithub className="w-5 h-5" />}
               />
               <SocialIcon
                 href="https://linkedin.com"
-                icon={<Linkedin className="w-5 h-5" />}
+                icon={<RiTelegram2Line className="w-5 h-5" />}
               />
             </div>
           </div>
@@ -95,15 +95,15 @@ export function FooterSmall() {
           <div className="flex space-x-4">
             <SocialIcon
               href="https://twitter.com"
-              icon={<Twitter className="w-4 h-4" />}
+              icon={<FaXTwitter className="w-4 h-4" />}
             />
             <SocialIcon
               href="https://github.com"
-              icon={<Github className="w-4 h-4" />}
+              icon={<TbBrandGithub className="w-4 h-4" />}
             />
             <SocialIcon
               href="https://linkedin.com"
-              icon={<Linkedin className="w-4 h-4" />}
+              icon={<RiTelegram2Line className="w-4 h-4" />}
             />
           </div>
         </div>

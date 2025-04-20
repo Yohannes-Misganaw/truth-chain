@@ -1,16 +1,18 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ShieldCheck, Star } from "lucide-react";
-import { useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { TbBrandGithub, TbCircleCheck } from "react-icons/tb";
+import Link from "next/link";
 
-const useCountUp = (end: number, duration: number) => {
+const useCountUp = (end: number, duration: number, start: boolean) => {
   const count = useRef(0);
   const [displayCount, setDisplayCount] = useState(0);
 
   useEffect(() => {
+    if (!start) return;
+
     const increment = end / (duration * 60);
     const updateCount = () => {
       if (count.current < end) {
@@ -20,18 +22,18 @@ const useCountUp = (end: number, duration: number) => {
       }
     };
     updateCount();
-  }, [end, duration]);
+  }, [end, duration, start]);
 
   return displayCount;
 };
 
 export default function HomeStats() {
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const y = useTransform(scrollYProgress, [0, 1], [-100, 100]);
+  const claimsRef = useRef(null);
+  const starsRef = useRef(null);
+
+  const claimsInView = useInView(claimsRef, { once: true, margin: "-100px" });
+  const starsInView = useInView(starsRef, { once: true, margin: "-100px" });
+
   const [stars, setStars] = useState(0);
 
   useEffect(() => {
@@ -41,16 +43,17 @@ export default function HomeStats() {
       .catch(() => setStars(0));
   }, []);
 
-  const claimsCount = useCountUp(12560, 3);
-  const starsCount = useCountUp(stars, 3);
+  const claimsCount = useCountUp(12560, 3, claimsInView);
+  const starsCount = useCountUp(stars, 3, starsInView);
 
   return (
     <section className="relative w-full py-10 bg-gradient-to-b from-transparent via-stone-900/50 to-transparent backdrop-blur-3xl">
       <div className="container relative mx-auto flex items-center justify-center px-4 pb-20 z-10">
         <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
           <motion.div
+            ref={claimsRef}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={claimsInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="group relative overflow-hidden p-8"
           >
@@ -82,9 +85,10 @@ export default function HomeStats() {
           </motion.div>
 
           <motion.div
+            ref={starsRef}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            animate={claimsInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
             className="group relative overflow-hidden p-8"
           >
             <div className="mb-6 flex items-center gap-4">
@@ -121,6 +125,42 @@ export default function HomeStats() {
             </p>
           </motion.div>
         </div>
+      </div>
+
+      <div className="flex items-center justify-center gap-4 md:gap-14 px-5 pb-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="text-center"
+        >
+          <Link
+            href="/submit"
+            className="group relative mx-auto inline-block overflow-hidden border border-gray-400 px-8 py-3 text-xs transition-all duration-300"
+          >
+            <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full" />
+            <span className="relative z-10 mix-blend-exclusion">
+              Submit a Claim
+            </span>
+          </Link>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="text-center"
+        >
+          <Link
+            href="/connect-wallet"
+            className="group relative mx-auto inline-block overflow-hidden border border-gray-400 px-8 py-3 text-xs transition-all duration-300"
+          >
+            <div className="absolute inset-0 left-0 h-full w-0 bg-purple-700 transition-all duration-300 group-hover:w-full" />
+            <span className="relative z-10 mix-blend-exclusion">
+              Connect Wallet
+            </span>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

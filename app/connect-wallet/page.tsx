@@ -122,7 +122,7 @@ export default function ConnectWalletPage() {
 
             {walletAddress ? (
               <div className="space-y-4">
-                <div className="bg-purple-900/30 p-4 rounded-xl border border-purple-700/30">
+                <div className="bg-purple-900/30 p-4 border border-purple-700/30">
                   <div className="flex items-center mb-2">
                     <Check className="text-green-500 mr-2" size={20} />
                     <span className="text-green-400 font-medium">
