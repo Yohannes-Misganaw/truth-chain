@@ -43,8 +43,8 @@ export default function HomeStats() {
       .catch(() => setStars(0));
   }, []);
 
-  const claimsCount = useCountUp(12560, 3, claimsInView);
-  const starsCount = useCountUp(stars, 3, starsInView);
+  const claimsCount = useCountUp(12560, 2, claimsInView);
+  const starsCount = useCountUp(stars, 2, starsInView);
 
   return (
     <section className="relative w-full py-10 bg-gradient-to-b from-transparent via-stone-900/50 to-transparent backdrop-blur-3xl">

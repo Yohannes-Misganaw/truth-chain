@@ -7,24 +7,6 @@ import { FaRegHandshake } from "react-icons/fa6";
 import { PiUsersFour } from "react-icons/pi";
 import { TbPlus } from "react-icons/tb";
 
-const benefits = [
-  {
-    title: "Immutable Trust",
-    description:
-      "All claims and media hashes are permanently recorded on-chain, ensuring tamper‑proof verifications and a transparent audit trail.",
-  },
-  {
-    title: "Privacy‑Preserving Validation",
-    description:
-      "Zero‑Knowledge Proofs allow users to prove they’ve fact‑checked or submitted evidence without exposing personal data or sensitive sources.",
-  },
-  {
-    title: "Community‑Driven Accuracy",
-    description:
-      "Decentralized voting by verified fact‑checkers and public stakeholders eliminates single‑point biases and fosters collective accountability.",
-  },
-];
-
 export default function KeyBenefits() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden ">
