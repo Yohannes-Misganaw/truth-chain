@@ -5,8 +5,13 @@ import MenuButton from "./MenuButton";
 import { useTiptapContext } from "./Provider";
 
 const StatusBar = () => {
-  const { editor, isFullScreen, isSourceMode, toggleFullScreen, toggleSourceMode } =
-    useTiptapContext();
+  const {
+    editor,
+    isFullScreen,
+    isSourceMode,
+    toggleFullScreen,
+    toggleSourceMode,
+  } = useTiptapContext();
   const counter = useEditorState({
     editor,
     selector: (ctx) => ({
@@ -17,13 +22,18 @@ const StatusBar = () => {
 
   return (
     <div className="rte-status-bar">
+      <div className="rte-counter">
+        <span className="rte-word-count">Words: {counter.words}</span>
+        <span className="rte-charater">Characters: {counter.characters}</span>
+      </div>
+
       <Toolbar dense>
-        <MenuButton
+        {/* <MenuButton
           icon="SourceCode"
           text="Source Code"
           active={isSourceMode}
           onClick={toggleSourceMode}
-        />
+        /> */}
         <MenuButton
           icon={isFullScreen ? "Minimize" : "Maximize"}
           text="Fullscreen"
@@ -31,11 +41,6 @@ const StatusBar = () => {
           onClick={toggleFullScreen}
         />
       </Toolbar>
-
-      <div className="rte-counter">
-        <span className="rte-word-count">Words: {counter.words}</span>
-        <span className="rte-charater">Characters: {counter.characters}</span>
-      </div>
     </div>
   );
 };

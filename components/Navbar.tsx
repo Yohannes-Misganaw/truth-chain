@@ -8,9 +8,9 @@ import { Menu, X } from "lucide-react";
 const menuItems = [
   { name: "Home", href: "/" },
   { name: "Verified News", href: "/news" },
-  { name: "Archive", href: "/archive" },
-  { name: "Submit Claim", href: "/submit" },
+  // { name: "Archive", href: "/archive" },
   { name: "Claims", href: "/claims" },
+  { name: "Submit Claim", href: "/submit" },
   { name: "About", href: "/about" },
 ];
 
@@ -40,7 +40,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed flex px-4 lg:px-10 py-5 items-center justify-between top-0 z-20 left-0 w-full bg-black/95 lg:bg-black/30 text-gray-300">
+    <nav className="fixed flex px-4 lg:px-10 py-5 items-center justify-between top-0 z-20 left-0 w-full bg-black/95 lg:bg-black/50 text-gray-300">
       <div className="flex items-center space-x-4 lg:space-x-10">
         <motion.div
           initial={{ opacity: 0 }}

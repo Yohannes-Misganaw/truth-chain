@@ -1,12 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Upload, Shield, FileText, AlertCircle, ArrowLeft } from "lucide-react";
+import {
+  Upload,
+  Shield,
+  FileText,
+  AlertCircle,
+  ArrowLeft,
+  Plus,
+} from "lucide-react";
 import Link from "next/link";
 import AddEvidence from "@/components/AddEvidence";
 import { useState } from "react";
 import TiptapEditor from "@/components/TiptapEditor";
 import { useForm, Controller } from "react-hook-form";
+import { FooterSmall } from "@/components/Footer";
+import PostContent from "@/components/shared/PostContent";
+import TiptapRenderer from "@/components/TiptapRenderer/ClientRenderer";
+import PostToc from "@/components/shared/PostToc";
 
 interface PostForm {
   content: string;
@@ -111,6 +122,34 @@ export default function SubmitClaim() {
             </div>
           </div>
 
+          {/* <div className="flex">
+            <PostContent>
+              <TiptapRenderer>{watch("content")}</TiptapRenderer>
+            </PostContent>
+            <PostToc />
+          </div> */}
+
+          <div className="mb-12">
+            <label className="block text-sm font-medium text-gray-400 mb-2">
+              Tags
+            </label>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                className="flex-1 bg-black/20 border border-gray-700 px-4 py-3 text-sm text-gray-200 focus:outline-none focus:border-purple-700"
+                placeholder="Tags"
+              />
+
+              <button
+                type="button"
+                className="text-center bg-black/20 border border-gray-700 px-4 py-3 text-sm text-gray-200 hover:border-purple-700 flex items-center justify-center gap-2"
+              >
+                <Plus className="h-4 w-4" />
+                Add Tag
+              </button>
+            </div>
+          </div>
+
           <AddEvidence />
 
           <div className="mb-12">
@@ -152,6 +191,7 @@ export default function SubmitClaim() {
           </div>
         </motion.div>
       </div>
+      <FooterSmall />
     </div>
   );
 }

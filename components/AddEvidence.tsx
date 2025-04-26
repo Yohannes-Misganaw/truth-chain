@@ -138,8 +138,8 @@ export default function AddEvidence() {
                         evidence.type === "image"
                           ? "image/*"
                           : evidence.type === "video"
-                          ? "video/*"
-                          : ".pdf,.doc,.docx"
+                            ? "video/*"
+                            : ".pdf,.doc,.docx"
                       }
                       onChange={(e) =>
                         e.target.files?.[0] &&
@@ -155,7 +155,7 @@ export default function AddEvidence() {
 
         <button
           onClick={addEvidence}
-          className="group w-full text-center bg-black/20 border border-gray-700 px-4 py-3 text-sm text-gray-200 hover:border-purple-700 flex items-center justify-center gap-2 rounded-lg"
+          className="group w-full text-center bg-black/20 border border-gray-700 px-4 py-3 text-sm text-gray-200 hover:border-purple-700 flex items-center justify-center gap-2"
         >
           <Plus className="h-4 w-4 transition-transform group-hover:rotate-90" />
           Add Evidence

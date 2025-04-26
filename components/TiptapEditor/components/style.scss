@@ -56,6 +56,20 @@
   --rte-shadow-3: 0px 0px 0px 1px #3d444d, 0px 24px 48px 0px #010409;
 
   --rte-radius: 0.5rem;
+
+  .article-content {
+    pre {
+      background-color: hsl(224, 14%, 16%);
+
+      code .line span {
+        color: var(--shiki-dark) !important;
+        background-color: var(--shiki-dark-bg) !important;
+        font-style: var(--shiki-dark-font-style) !important;
+        font-weight: var(--shiki-dark-font-weight) !important;
+        text-decoration: var(--shiki-dark-text-decoration) !important;
+      }
+    }
+  }
 }
 // Colors
 $bg-color: var(--rte-bg, #000000);
@@ -751,13 +765,14 @@ $editor-code-font: var(
   border-bottom-right-radius: $radius;
 
   .rte-counter {
-    margin-left: auto;
+    margin-right: auto;
     padding: 0.25rem 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    //  font-size: 90%;
+    font-family: var(--font-ibm-plex-mono);
     font-weight: 500;
+    font-size: small;
     color: $muted-fg-color;
   }
 }
