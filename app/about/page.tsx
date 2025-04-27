@@ -2,14 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import {
-  Github,
-  CircuitBoard,
-  Network,
-  Shield,
-  Cpu,
-  ArrowUpRight,
-} from "lucide-react";
+import { CircuitBoard, Network, Shield, Cpu, ArrowUpRight } from "lucide-react";
 import { TbBrandGithub } from "react-icons/tb";
 import { FooterLarge } from "@/components/Footer";
 
@@ -18,7 +11,7 @@ const teamMembers = [
     name: "Yohannes Misganaw",
     role: "Project Developer & Designer",
     github: "yohannes-misganaw",
-    photo: "https://avatars.githubusercontent.com/u/99452117?v=4",
+    photo: "",
   },
   {
     name: "Hidaya Ayoub",
@@ -51,7 +44,7 @@ const DecorativeIcon = () => {
   return (
     <div className="absolute inset-0 pointer-events-none">
       <div className="relative w-full h-full overflow-hidden">
-        <div className="absolute inset-0 bg-black/40 z-10" />
+        <div className="absolute inset-0 bg-trasparent z-10" />
 
         <div className="grid grid-cols-8 grid-rows-4 gap-8 opacity-50 text-purple-500">
           {Array.from({ length: 25 }).map((_, i) => {
@@ -68,6 +61,7 @@ const DecorativeIcon = () => {
                   width: `${size}px`,
                   height: `${size}px`,
                 }}
+                suppressHydrationWarning
               >
                 {IconComponent}
               </div>
@@ -84,6 +78,34 @@ export default function About() {
     <div>
       <div className="relative min-h-screen w-full bg-gradient-to-t from-purple-900/30 via-black to-black">
         <div className="container mx-auto px-4 py-24 md:py-28">
+          <div className="mb-12 pb-5 border-b border-gray-500">
+            <h1 className="text-2xl font-bold text-gray-300 mb-5">About</h1>
+
+            <p className="text-sm font-medium text-gray-400 text-left">
+              TruthChain combines blockchain transparency with zero-knowledge
+              cryptography to create an immutable record of verified
+              information. Our platform empowers communities to collaboratively
+              validate claims while preserving individual privacy.
+            </p>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-10 border bg-purple-900/30 p-4 backdrop-blur-sm"
+              style={{
+                borderImage:
+                  "repeating-linear-gradient(-45deg, #1e2939 0, #1e2939 4px, transparent 4px, transparent 8px) 1.5",
+              }}
+            >
+              <h3 className="text-sm font-semibold text-gray-300 mb-3">
+                African Blockchain Championship 2025
+              </h3>
+              <p className="text-xs font-medium text-gray-500">
+                Developed exclusively for the African blockchain Championship
+                competition
+              </p>
+            </motion.div>
+          </div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -93,20 +115,18 @@ export default function About() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-gradient bg-gradient-to-b from-gray-300 via-gray-500 to-gray-500 bg-clip-text text-xl font-bold !leading-tight text-transparent md:text-3xl lg:text-4xl"
+              className="text-gradient bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 bg-clip-text text-xl font-bold !leading-tight text-transparent md:text-2xl lg:text-3xl"
             >
               Behind Truth Chain
             </motion.h2>
           </motion.div>
 
-          {/* Team Members Grid */}
           <div className="space-y-16">
             {teamMembers.map((member, index) => (
               <div
                 key={member.name}
                 className={`grid grid-cols-1 md:grid-cols-2 gap-8 ${index % 2 === 0 ? "" : "md:grid-flow-col-dense"}`}
               >
-                {/* Member Card */}
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -130,7 +150,7 @@ export default function About() {
                           className="object-cover"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gray-800 flex items-center justify-center text-purple-400 text-2xl font-bold">
+                        <div className="w-full h-full bg-gray-950 flex items-center justify-center text-purple-400 text-4xl font-bold">
                           {member.name.charAt(0)}
                         </div>
                       )}
@@ -163,7 +183,6 @@ export default function About() {
                   <div className="absolute inset-0 -left-full h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-all duration-1000 group-hover:left-full" />
                 </motion.div>
 
-                {/* Decorative Icon */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -175,25 +194,6 @@ export default function About() {
               </div>
             ))}
           </div>
-
-          {/* Competition Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-20 border bg-black/30 p-8 backdrop-blur-sm"
-            style={{
-              borderImage:
-                "repeating-linear-gradient(-45deg, #364153 0, #364153 4px, transparent 4px, transparent 8px) 1.5",
-            }}
-          >
-            <h3 className="text-xl font-semibold text-gray-200 mb-4">
-              African Blockchain Championship 2025
-            </h3>
-            <p className="text-sm font-medium text-gray-400">
-              Developed exclusively for the African blockchain Championship
-              competition
-            </p>
-          </motion.div>
         </div>
       </div>
       <FooterLarge />
