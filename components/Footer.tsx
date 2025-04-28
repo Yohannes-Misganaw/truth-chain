@@ -11,7 +11,13 @@ export function FooterLarge() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 lg:gap-24">
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2">
-              <div className="px-2 py-1.5 text-sm bg-purple-600">TC</div>
+              <div className="w-8 h-8">
+                <img
+                  src="/logo.jpg"
+                  alt="Truth Chain"
+                  className="w-full object-contain"
+                />
+              </div>
               <span className="text-xl font-bold text-white">Truth Chain</span>
             </div>
             <p className="mt-4 text-gray-400">
