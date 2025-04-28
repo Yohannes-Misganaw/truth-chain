@@ -58,8 +58,35 @@
   --rte-radius: 0.5rem;
 
   .article-content {
+    li p {
+      margin: 0 !important;
+    }
+
+    figcaption {
+      text-align: center;
+    }
+
+    blockquote {
+      p:first-of-type::before,
+      p:first-of-type::after {
+        content: unset;
+      }
+    }
+
     pre {
+      position: relative;
       background-color: hsl(224, 14%, 16%);
+      padding-block: 1rem;
+      overflow-x: auto;
+
+      code {
+        padding-inline: 1.25rem;
+        display: block;
+        width: fit-content;
+        min-width: 100%;
+        font-size: 90%;
+        line-height: 1.7;
+      }
 
       code .line span {
         color: var(--shiki-dark) !important;

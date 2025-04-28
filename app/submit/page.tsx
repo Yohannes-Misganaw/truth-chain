@@ -15,9 +15,6 @@ import { useState } from "react";
 import TiptapEditor from "@/components/TiptapEditor";
 import { useForm, Controller } from "react-hook-form";
 import { FooterSmall } from "@/components/Footer";
-import PostContent from "@/components/shared/PostContent";
-import TiptapRenderer from "@/components/TiptapRenderer/ClientRenderer";
-import PostToc from "@/components/shared/PostToc";
 
 interface PostForm {
   content: string;

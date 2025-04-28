@@ -7,7 +7,8 @@ export async function highlight(code: string, lang: string) {
   const out = await codeToHast(code, {
     lang,
     themes: {
-      light: "github-light-default",
+      // light: "github-light-default",
+      light: "one-light-pro",
       dark: "one-dark-pro",
     },
     //  structure: "inline",
