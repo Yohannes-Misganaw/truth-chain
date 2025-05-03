@@ -8,7 +8,7 @@ export async function highlight(code: string, lang: string) {
     lang,
     themes: {
       // light: "github-light-default",
-      light: "one-light-pro",
+      light: "one-dark-pro",
       dark: "one-dark-pro",
     },
     //  structure: "inline",

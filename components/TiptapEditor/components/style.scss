@@ -45,6 +45,8 @@
   --rte-editor-scrollbar: #ffffff40;
   --rte-editor-selection: #ffffff4e;
 
+  --shiki-dark: #98c379;
+
   //   Box shadow
   --rte-shadow-1:
     0px 0px 0px 1px #3d444d, 0px 6px 12px -3px #01040966,
@@ -56,48 +58,8 @@
   --rte-shadow-3: 0px 0px 0px 1px #3d444d, 0px 24px 48px 0px #010409;
 
   --rte-radius: 0.5rem;
-
-  .article-content {
-    li p {
-      margin: 0 !important;
-    }
-
-    figcaption {
-      text-align: center;
-    }
-
-    blockquote {
-      p:first-of-type::before,
-      p:first-of-type::after {
-        content: unset;
-      }
-    }
-
-    pre {
-      position: relative;
-      background-color: hsl(224, 14%, 16%);
-      padding-block: 1rem;
-      overflow-x: auto;
-
-      code {
-        padding-inline: 1.25rem;
-        display: block;
-        width: fit-content;
-        min-width: 100%;
-        font-size: 90%;
-        line-height: 1.7;
-      }
-
-      code .line span {
-        color: var(--shiki-dark) !important;
-        background-color: var(--shiki-dark-bg) !important;
-        font-style: var(--shiki-dark-font-style) !important;
-        font-weight: var(--shiki-dark-font-weight) !important;
-        text-decoration: var(--shiki-dark-text-decoration) !important;
-      }
-    }
-  }
 }
+
 // Colors
 $bg-color: var(--rte-bg, #000000);
 $fg-color: var(--rte-fg, #b5c2d2);

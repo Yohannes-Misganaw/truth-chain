@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import clsx from "clsx";
 import useToc from "@/hooks/useToc";
 
-const PostToc = () => {
+const PostToc = ({ className }: { className?: string }) => {
   const router = useRouter();
   const pathname = usePathname();
   const { items, activeId } = useToc({
@@ -31,10 +31,10 @@ const PostToc = () => {
   if (!items.length) return null;
 
   return (
-    <div className="order-1 lg:order-3">
+    <div className={clsx("order-1 lg:order-3", className)}>
       <div className="lg:sticky lg:h-[calc(100vh-120px)] lg:top-24 overflow-auto">
         <h2 className="text-sm font-bold uppercase">On this page</h2>
-        <ul className="mt-4 space-y-3.5 text-sm">
+        <ul className="mt-4 space-y-3.5 text-[13px] pl-5 border-l border-gray-700">
           {items.map((item) => (
             <li
               key={item.id}
@@ -45,8 +45,8 @@ const PostToc = () => {
               <Link
                 href={`#${item.id}`}
                 onClick={scrollToHeading(item.id)}
-                className={`hover:text-blue-600 transition-colors ${
-                  activeId === item.id ? "text-blue-600" : ""
+                className={`hover:text-purple-500 transition-colors ${
+                  activeId === item.id ? "text-purple-500" : "text-gray-400"
                 }`}
               >
                 {item.text}

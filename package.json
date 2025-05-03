@@ -45,6 +45,7 @@
     "framer-motion": "^12.7.3",
     "hast-util-to-jsx-runtime": "^2.3.6",
     "highlight.js": "^11.11.1",
+    "ldrs": "^1.1.7",
     "lowlight": "^3.3.0",
     "lucide-react": "^0.488.0",
     "motion": "^12.7.4",
