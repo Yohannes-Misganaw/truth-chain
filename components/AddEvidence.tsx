@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Plus, X, Upload, Image, Video, File, Link2 } from "lucide-react";
 import {
   Select,
@@ -8,18 +7,15 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { motion } from "framer-motion";
+import { Evidence, EvidenceType } from "@/app/submit/page";
 
-type EvidenceType = "link" | "image" | "video" | "file";
-
-interface Evidence {
-  id: string;
-  type: EvidenceType;
-  data: string | File | null;
-}
-
-export default function AddEvidence() {
-  const [evidences, setEvidences] = useState<Evidence[]>([]);
-
+export default function AddEvidence({
+  evidences,
+  setEvidences,
+}: {
+  evidences: Evidence[];
+  setEvidences: React.Dispatch<React.SetStateAction<Evidence[]>>;
+}) {
   const addEvidence = () => {
     const newEvidence: Evidence = {
       id: Math.random().toString(36).substr(2, 9),
@@ -59,6 +55,7 @@ export default function AddEvidence() {
               className="mb-4 p-4 bg-black/20 border border-gray-700 rounded-lg relative"
             >
               <button
+                type="button"
                 onClick={() => removeEvidence(evidence.id)}
                 className="absolute top-2 right-2 p-1 text-gray-400 hover:text-white"
               >
@@ -122,15 +119,41 @@ export default function AddEvidence() {
               ) : (
                 <div className="border-2 border-dashed border-gray-800 hover:border-purple-700 rounded-md p-4 text-center cursor-pointer">
                   <label className="block">
-                    <Upload className="h-8 w-8 mx-auto text-gray-400 mb-2" />
-                    <p className="text-sm text-gray-400">
-                      Click to upload {evidence.type}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">
-                      {evidence.type === "image" && "JPEG, PNG, GIF (Max 10MB)"}
-                      {evidence.type === "video" && "MP4, MOV (Max 500MB)"}
-                      {evidence.type === "file" && "PDF, DOC, DOCX (Max 25MB)"}
-                    </p>
+                    {evidence.type === "image" &&
+                    typeof evidence.data === "object" &&
+                    evidence.data &&
+                    "name" in evidence.data ? (
+                      <img
+                        src={URL.createObjectURL(evidence.data as File)}
+                        alt="Preview"
+                        className="max-h-40 mx-auto mb-2 rounded-md object-contain border border-gray-700"
+                      />
+                    ) : (
+                      <Upload className="h-8 w-8 mx-auto text-gray-400 mb-2" />
+                    )}
+
+                    {typeof evidence.data === "object" &&
+                    evidence.data &&
+                    "name" in evidence.data ? (
+                      <p className="text-sm text-gray-400">
+                        {(evidence.data as File).name}
+                      </p>
+                    ) : (
+                      <>
+                        <p className="text-sm text-gray-400">
+                          {`Click to upload ${evidence.type}`}
+                        </p>
+
+                        <p className="text-xs text-gray-500 mt-1">
+                          {evidence.type === "image" &&
+                            "JPEG, PNG, GIF (Max 10MB)"}
+                          {evidence.type === "video" && "MP4, MOV (Max 500MB)"}
+                          {evidence.type === "file" &&
+                            "PDF, DOC, DOCX (Max 25MB)"}
+                        </p>
+                      </>
+                    )}
+
                     <input
                       type="file"
                       className="hidden"
@@ -154,6 +177,7 @@ export default function AddEvidence() {
         ))}
 
         <button
+          type="button"
           onClick={addEvidence}
           className="group w-full text-center bg-black/20 border border-gray-700 px-4 py-3 text-sm text-gray-200 hover:border-purple-700 flex items-center justify-center gap-2"
         >

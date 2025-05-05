@@ -39,7 +39,7 @@ export default function ClaimDetails() {
       id: "123",
       cover_image:
         "https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      title: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do",
+      title: "The Truth Chain",
       claim_body: `
      <h2>Introduction</h2>
 <p>

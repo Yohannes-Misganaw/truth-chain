@@ -50,39 +50,20 @@ export default function ConnectWalletPage() {
       }
 
       const api = await window.cardano.lace.enable();
-
-      let address = "";
-
-      const usedAddresses = await api.getUsedAddresses();
-      console.log("Used addresses:", usedAddresses);
-
-      if (usedAddresses && usedAddresses.length > 0) {
-        if (typeof usedAddresses[0] === "string") {
-          address = usedAddresses[0];
-        } else {
-          address = Buffer.from(usedAddresses[0]).toString("hex");
-        }
-      } else {
-        const changeAddress = await api.getChangeAddress();
-        console.log("Change address:", changeAddress);
-
-        if (changeAddress) {
-          console.log("Using change address:", changeAddress);
-          if (typeof changeAddress === "string") {
-            address = changeAddress;
-          } else {
-            address = Buffer.from(changeAddress).toString("hex");
-          }
-        }
+      if (!api) {
+        setError(
+          "Failed to enable Lace wallet. Please check extension permissions."
+        );
+        return;
       }
 
-      if (address) {
-        setWalletAddress(address);
-        localStorage.setItem("walletAddress", address);
-        console.log("Connected to Lace wallet successfully!");
-      } else {
-        setError("Could not retrieve wallet address information.");
-      }
+      const networkId = await api.getNetworkId();
+      console.log("Connected to network ID:", networkId);
+
+      const connectionId = "lace-connected-" + Date.now();
+      setWalletAddress(connectionId);
+      localStorage.setItem("walletAddress", connectionId);
+      console.log("Connected to Lace wallet successfully");
     } catch (err) {
       console.error("Error connecting to Lace wallet:", err);
       setError("Failed to connect to Lace wallet. Please try again.");
@@ -123,15 +104,12 @@ export default function ConnectWalletPage() {
             {walletAddress ? (
               <div className="space-y-4">
                 <div className="bg-purple-900/30 p-4 border border-purple-700/30">
-                  <div className="flex items-center mb-2">
-                    <Check className="text-green-500 mr-2" size={20} />
-                    <span className="text-green-400 font-medium">
+                  <div className="flex items-center justify-center">
+                    <Check className="text-green-500 mr-2" size={18} />
+                    <span className="text-green-400 font-medium text-sm">
                       Connected
                     </span>
                   </div>
-                  <p className="text-xs text-purple-300 break-all text-left">
-                    {walletAddress}
-                  </p>
                 </div>
 
                 <button
