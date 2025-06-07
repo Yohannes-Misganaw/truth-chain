@@ -1,7 +1,6 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 import PostContent from "@/components/shared/PostContent";
 import PostToc from "@/components/shared/PostToc";
 import TiptapRenderer from "@/components/TiptapRenderer/ClientRenderer";
@@ -31,7 +30,6 @@ interface Evidence {
 }
 
 export default function ClaimDetails() {
-  const { id } = useParams();
   const [claim, setClaim] = useState<ClaimProps | null>();
 
   useEffect(() => {

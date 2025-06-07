@@ -148,7 +148,7 @@ export default function ConnectWalletPage() {
             {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
 
             <p className="text-xs md:text-sm text-purple-400 lg:text-purple-400/60 mt-4 px-2 md:px-0">
-              Don't have Lace?{" "}
+              Don&apos;t have Lace?{" "}
               <a
                 href="https://www.lace.io"
                 target="_blank"
