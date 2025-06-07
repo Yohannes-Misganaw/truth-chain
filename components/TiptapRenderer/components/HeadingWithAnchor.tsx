@@ -8,7 +8,7 @@ interface HeadingWithAnchorProps {
 }
 
 const HeadingWithAnchor = ({ level, children, id }: HeadingWithAnchorProps) => {
-  const Heading = `h${level}` as keyof JSX.IntrinsicElements;
+  const Heading = `h${level}` as keyof React.JSX.IntrinsicElements;
 
   return (
     <Heading id={id}>

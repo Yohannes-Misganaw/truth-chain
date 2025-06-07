@@ -37,7 +37,7 @@ export const components: Partial<Components> = {
     //  </div>
   ),
   pre: ({ children, ...props }) => {
-    const code = (children as ReactElement).props.children;
+    const code = children.props.children;
     return (
       <div className="relative group not-prose rounded-lg overflow-hidden border border-[#d1d9e0] dark:border-[#3d444d]">
         <CopyButton code={String(code)} />
@@ -55,7 +55,10 @@ export const components: Partial<Components> = {
     );
   },
   table: (props: any) => (
-    <table className="not-prose w-full table-auto border-collapse mx-auto text-sm" {...props} />
+    <table
+      className="not-prose w-full table-auto border-collapse mx-auto text-sm"
+      {...props}
+    />
   ),
   tr: (props: any) => (
     <tr
