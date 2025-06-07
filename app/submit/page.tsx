@@ -23,6 +23,8 @@ import TiptapRenderer from "@/components/TiptapRenderer/ClientRenderer";
 interface PostForm {
   title: string;
   content: string;
+  tags: string[];
+  evidences: Evidence[];
 }
 
 export type EvidenceType = "link" | "image" | "video" | "file";
@@ -46,7 +48,7 @@ export default function SubmitClaim() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const { control, register, handleSubmit, watch } = useForm<PostForm>({
-    defaultValues: { title: "", content: "" },
+    defaultValues: { title: "", content: "", tags: [], evidences: [] },
   });
 
   useEffect(() => {
@@ -110,15 +112,35 @@ export default function SubmitClaim() {
     setCurrentStep(2);
   };
 
-  const onFinalSubmit = () => {
-    const data = {
-      ...watch(),
-      coverFile,
-      tags,
-      evidences,
-    };
-    console.log("Form data:", data);
-    setCurrentStep(3);
+  const onFinalSubmit = async () => {
+    const formData = new FormData();
+    formData.append("title", watch("title"));
+    formData.append("content", watch("content"));
+    formData.append("cover", coverFile!);
+    tags.forEach((t) => formData.append("tags", t));
+    evidences.forEach((ev) => {
+      if (ev.data instanceof File) {
+        formData.append("evidences[]", ev.data, ev.id);
+      } else if (typeof ev.data === "string") {
+        const blob = new Blob([ev.data], { type: "text/plain" });
+        formData.append("evidences[]", blob, `${ev.id}.txt`);
+      }
+    });
+
+    try {
+      const res = await fetch("/api/claims", {
+        method: "POST",
+        body: formData,
+      });
+      if (!res.ok) throw new Error("Submission failed");
+      const result = await res.json();
+      console.log(result);
+      setCurrentStep(3);
+    } catch (err: any) {
+      console.error(err);
+      setFormErrors(["Something went wrong while submitting."]);
+      setCurrentStep(2);
+    }
   };
 
   const onBack = () => setCurrentStep((s) => s - 1);
