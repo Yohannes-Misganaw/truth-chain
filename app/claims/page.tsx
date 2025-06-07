@@ -5,6 +5,7 @@ import { CheckCircle2, Clock, FileText, Search, Vote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FooterSmall } from "@/components/Footer";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Claims() {
   const claims = [
@@ -168,12 +169,12 @@ export default function Claims() {
                       30% vote True
                     </div>
                   </div>
-                  <Button
-                    size="sm"
-                    className="bg-purple-900/30 hover:bg-purple-900/50 text-purple-400"
+                  <Link
+                    href={`/claims/${claim.id}`}
+                    className="bg-purple-900/30 hover:bg-purple-900/50 text-purple-400 px-4 py-2 text-sm flex items-center"
                   >
                     View Details
-                  </Button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
