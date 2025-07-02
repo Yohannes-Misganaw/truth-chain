@@ -33,15 +33,6 @@ export default function ConnectWalletPage() {
 
             {address ? (
               <div className="space-y-4">
-                <div className="bg-purple-900/30 p-4 border border-purple-700/30">
-                  <div className="flex items-center justify-center">
-                    <Check className="text-green-500 mr-2" size={18} />
-                    <span className="text-green-400 font-medium text-sm">
-                      Connected: {address.slice(0, 8)}…{address.slice(-6)}
-                    </span>
-                  </div>
-                </div>
-
                 <button
                   onClick={disconnect}
                   className="w-full group bg-red-700/70 hover:bg-red-600 text-white h-10 text-sm px-4 transition-all duration-200"
