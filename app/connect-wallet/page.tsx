@@ -1,86 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { FooterSmall } from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Wallet2, ChevronRight, Check, LogOut } from "lucide-react";
+import { useWallet } from "@/contexts/WalletContext";
 
 export default function ConnectWalletPage() {
-  const [walletAddress, setWalletAddress] = useState<string>();
-  const [isConnecting, setIsConnecting] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
-
-  useEffect(() => {
-    const checkExistingConnection = async () => {
-      try {
-        const savedWalletAddress = localStorage.getItem("walletAddress");
-
-        if (savedWalletAddress && window.cardano?.lace) {
-          const isEnabled = await window.cardano.lace.isEnabled();
-
-          if (isEnabled) {
-            setWalletAddress(savedWalletAddress);
-            console.log(
-              "Restored existing wallet connection:",
-              savedWalletAddress
-            );
-          } else {
-            localStorage.removeItem("walletAddress");
-          }
-        }
-      } catch (err) {
-        console.error("Error checking existing wallet connection:", err);
-        localStorage.removeItem("walletAddress");
-      }
-    };
-
-    checkExistingConnection();
-  }, []);
-
-  const connectWallet = async () => {
-    try {
-      setIsConnecting(true);
-      setError("");
-
-      if (!window.cardano?.lace) {
-        setError(
-          "Lace wallet not found. Please install Lace wallet extension."
-        );
-        return;
-      }
-
-      const api = await window.cardano.lace.enable();
-      if (!api) {
-        setError(
-          "Failed to enable Lace wallet. Please check extension permissions."
-        );
-        return;
-      }
-
-      const networkId = await api.getNetworkId();
-      console.log("Connected to network ID:", networkId);
-
-      const connectionId = "lace-connected-" + Date.now();
-      setWalletAddress(connectionId);
-      localStorage.setItem("walletAddress", connectionId);
-      console.log("Connected to Lace wallet successfully");
-    } catch (err) {
-      console.error("Error connecting to Lace wallet:", err);
-      setError("Failed to connect to Lace wallet. Please try again.");
-    } finally {
-      setIsConnecting(false);
-    }
-  };
-
-  const disconnectWallet = () => {
-    setWalletAddress(undefined);
-    localStorage.removeItem("walletAddress");
-    console.log("Wallet disconnected");
-  };
+  const { address, isConnecting, error, connect, disconnect } = useWallet();
 
   return (
     <div>
-      <div className="min-h-screen bg-gradient-to-t from-purple-700/50 via-black to-black flex items-center justify-center md:p-4">
+      <div className="min-h-screen bg-gradient-to-t from-purple-700/10 via-black to-black flex items-center justify-center md:p-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,19 +31,19 @@ export default function ConnectWalletPage() {
               interact with Truth Chain.
             </p>
 
-            {walletAddress ? (
+            {address ? (
               <div className="space-y-4">
                 <div className="bg-purple-900/30 p-4 border border-purple-700/30">
                   <div className="flex items-center justify-center">
                     <Check className="text-green-500 mr-2" size={18} />
                     <span className="text-green-400 font-medium text-sm">
-                      Connected
+                      Connected: {address.slice(0, 8)}…{address.slice(-6)}
                     </span>
                   </div>
                 </div>
 
                 <button
-                  onClick={disconnectWallet}
+                  onClick={disconnect}
                   className="w-full group bg-red-700/70 hover:bg-red-600 text-white h-10 text-sm px-4 transition-all duration-200"
                 >
                   <div className="flex items-center justify-center">
@@ -124,7 +54,7 @@ export default function ConnectWalletPage() {
               </div>
             ) : (
               <button
-                onClick={connectWallet}
+                onClick={connect}
                 disabled={isConnecting}
                 className={`w-full group ${
                   isConnecting
