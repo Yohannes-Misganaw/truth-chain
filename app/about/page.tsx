@@ -24,7 +24,7 @@ const teamMembers = [
     role: "Project Developer",
     github: "Huzeyfa7",
     photo:
-      "https://lh3.googleusercontent.com/a-/ALV-UjVFgxZpzymXlOIhGggHhjVy6d3Xr-VLV72Bwx8IU6Znc-sanhLJ=s600-p-k-rw-no",
+      "https://lh3.googleusercontent.com/a-/ALV-UjVFgxZpzymXlOIhGggHhjVy6d3Xr-VLV72Bwx8IU6Znc-sanhLJ",
   },
 ];
 
