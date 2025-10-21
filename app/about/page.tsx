@@ -20,16 +20,11 @@ const teamMembers = [
     photo: "",
   },
   {
-    name: "Ab",
-    role: "Project Designer",
-    github: "myCoder452",
-    photo: "",
-  },
-  {
-    name: "Leyutsega Abebaw",
-    role: "Pitch Designer",
-    github: "",
-    photo: "",
+    name: "Huzeyfa Kasim",
+    role: "Project Developer",
+    github: "Huzeyfa7",
+    photo:
+      "https://lh3.googleusercontent.com/a-/ALV-UjVFgxZpzymXlOIhGggHhjVy6d3Xr-VLV72Bwx8IU6Znc-sanhLJ",
   },
 ];
 
@@ -98,7 +93,7 @@ export default function About() {
               }}
             >
               <h3 className="text-sm font-semibold text-gray-300 mb-3">
-                Personal Project of the team below
+                Personal Project of the team (Cyclone) below
               </h3>
               <p className="text-xs font-medium text-gray-500">
                 This project is not associated with any organization or company.
