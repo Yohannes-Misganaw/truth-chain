@@ -15,16 +15,21 @@ const teamMembers = [
   },
   {
     name: "Hidaya Ayoub",
-    role: "Project Designer",
+    role: "Project Developer & Designer",
     github: "hiduayoub",
     photo: "",
   },
   {
-    name: "Huzeyfa Kasim",
-    role: "Project Developer",
-    github: "Huzeyfa7",
-    photo:
-      "https://lh3.googleusercontent.com/a-/ALV-UjVFgxZpzymXlOIhGggHhjVy6d3Xr-VLV72Bwx8IU6Znc-sanhLJ",
+    name: "Ab",
+    role: "Project Designer",
+    github: "myCoder452",
+    photo: "",
+  },
+  {
+    name: "Leyutsega Abebaw",
+    role: "Pitch Designer",
+    github: "",
+    photo: "",
   },
 ];
 
