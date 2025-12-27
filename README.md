@@ -112,7 +112,7 @@ TruthChain combines **blockchain transparency**, **Zero-Knowledge Proofs (ZKPs)*
 
 ### Installation
 ```bash
-git clone https://github.com/your-org/truthchain.git
+git clone https://github.com/Yohannes-Misganaw/truth-chain.git
 cd truthchain
 npm install
 ```
